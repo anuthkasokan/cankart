@@ -14,12 +14,6 @@
     "categories": {
       "auth": {
         "cankart316dd5c7": {}
-      },
-      "function": {
-        "videogamelistfunc": {
-          "deploymentBucketName": "amplify-cankart-dev-161115-deployment",
-          "s3Key": "amplify-builds/videogamelistfunc-4571722f675265786c73-build.zip"
-        }
       }
     }
   }
