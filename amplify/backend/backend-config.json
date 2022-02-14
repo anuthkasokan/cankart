@@ -1,6 +1,6 @@
 {
   "auth": {
-    "cankart316dd5c7": {
+    "cankartdac7425b": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -27,31 +27,11 @@
       }
     }
   },
-  "storage": {
-    "cankartDb": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    }
-  },
   "function": {
-    "videogamelistfunc": {
+    "videogameapifunc": {
       "build": true,
       "providerPlugin": "awscloudformation",
-      "service": "Lambda",
-      "dependsOn": [
-        {
-          "category": "storage",
-          "resourceName": "cankartDb",
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "attributeEnvMap": {
-            "Name": "TABLE_NAME",
-            "Arn": "TABLE_ARN"
-          }
-        }
-      ]
+      "service": "Lambda"
     }
   },
   "api": {
@@ -61,7 +41,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "videogamelistfunc",
+          "resourceName": "videogameapifunc",
           "attributes": [
             "Name",
             "Arn"
