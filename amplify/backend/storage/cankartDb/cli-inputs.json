@@ -1,0 +1,14 @@
+{
+  "resourceName": "cankartDb",
+  "tableName": "videogamelist",
+  "partitionKey": {
+    "fieldName": "videogameId",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "videogamename",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
