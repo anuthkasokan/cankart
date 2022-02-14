@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/videogames/{videogameId}": {
+      "name": "/videogames/{videogameId}",
+      "lambdaFunction": "videogameapifunc",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

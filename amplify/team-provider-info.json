@@ -1,19 +1,25 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cankart-dev-161115-authRole",
-      "UnauthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-161115-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-161115-authRole",
+      "AuthRoleName": "amplify-cankart-dev-233731-authRole",
+      "UnauthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-233731-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-233731-authRole",
       "Region": "ca-central-1",
-      "DeploymentBucketName": "amplify-cankart-dev-161115-deployment",
-      "UnauthRoleName": "amplify-cankart-dev-161115-unauthRole",
-      "StackName": "amplify-cankart-dev-161115",
-      "StackId": "arn:aws:cloudformation:ca-central-1:589181210185:stack/amplify-cankart-dev-161115/82bb34b0-8d11-11ec-89f9-02725812c760",
-      "AmplifyAppId": "dmixeaq1y9s1l"
+      "DeploymentBucketName": "amplify-cankart-dev-233731-deployment",
+      "UnauthRoleName": "amplify-cankart-dev-233731-unauthRole",
+      "StackName": "amplify-cankart-dev-233731",
+      "StackId": "arn:aws:cloudformation:ca-central-1:589181210185:stack/amplify-cankart-dev-233731/d506fae0-8d4f-11ec-95b6-0a53b41213e0",
+      "AmplifyAppId": "dcc6o0mgkuw6r"
     },
     "categories": {
       "auth": {
-        "cankart316dd5c7": {}
+        "cankartdac7425b": {}
+      },
+      "function": {
+        "videogameapifunc": {
+          "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
+          "s3Key": "amplify-builds/videogameapifunc-315330385a4a6a354739-build.zip"
+        }
       }
     }
   }
