@@ -9,16 +9,22 @@
       "UnauthRoleName": "amplify-cankart-dev-233731-unauthRole",
       "StackName": "amplify-cankart-dev-233731",
       "StackId": "arn:aws:cloudformation:ca-central-1:589181210185:stack/amplify-cankart-dev-233731/d506fae0-8d4f-11ec-95b6-0a53b41213e0",
-      "AmplifyAppId": "dcc6o0mgkuw6r"
+      "AmplifyAppId": "dcc6o0mgkuw6r",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-cankart-dev-233731-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
       "auth": {
-        "cankartdac7425b": {}
+        "cankartdac7425b": {},
+        "true": {}
       },
       "function": {
         "videogameapifunc": {
           "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
           "s3Key": "amplify-builds/videogameapifunc-315330385a4a6a354739-build.zip"
+        },
+        "videogamefunc": {
+          "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
+          "s3Key": "amplify-builds/videogamefunc-67437033314d5167524d-build.zip"
         }
       }
     }
