@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import { Amplify, API } from "aws-amplify";
+import { Amplify, API, Storage } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
 
 Amplify.configure(awsconfig);
 
 function App() {
+  const [images, setImages] = useState([]);
+  const [imageURL, setImageURL] = useState("");
+
+  useEffect(() => {
+    async function getImages() {
+      try {
+        await Storage.get("logo192.png").then((data) => {
+          setImageURL(data);
+        });
+      } catch (error) {
+        console.log("error: " + error);
+      }
+    }
+    getImages();
+  });
+
   const getList = () => {
     return API.get("cankartapi", "/getList/1", {})
       .then((result) => {
@@ -55,6 +71,7 @@ function App() {
         console.log(err);
       });
   };
+
   return (
     <div className="App">
       <header className="App-header">
@@ -72,6 +89,8 @@ function App() {
         <button onClick={deleteList} className="btn book-link">
           Delete /getList
         </button>
+
+        <img src={imageURL}></img>
       </header>
     </div>
   );

@@ -81,6 +81,11 @@
     "videogamedb": {
       "service": "DynamoDB",
       "providerPlugin": "awscloudformation"
+    },
+    "gameImages": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   }
 }
