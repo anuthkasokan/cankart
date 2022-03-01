@@ -3,17 +3,18 @@ import "./App.css";
 import { Amplify, API, Storage } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
+import StripeContainer from "./components/StripeContainer";
 
 Amplify.configure(awsconfig);
 
 function App() {
-  const [images, setImages] = useState([]);
+  const [showItem, setShowItem] = useState(false);
   const [imageURL, setImageURL] = useState("");
 
   useEffect(() => {
     async function getImages() {
       try {
-        await Storage.get("logo192.png").then((data) => {
+        await Storage.get("Call-of-Duty.jpg-d196774.png").then((data) => {
           setImageURL(data);
         });
       } catch (error) {
@@ -37,7 +38,7 @@ function App() {
       body: {
         videogameId: 1,
         name: "Call of duty",
-        imageUrl: "./assets/callofduty.jpg",
+        imageUrl: "/public/Call-of-Duty.jpg-d196774.png",
         size: "11.6GB",
         price: "16.57$",
         company: "Activision",
@@ -89,9 +90,17 @@ function App() {
         <button onClick={deleteList} className="btn book-link">
           Delete /getList
         </button>
-
-        <img src={imageURL}></img>
       </header>
+
+      <h1>callofduty7</h1>
+      {showItem ? (
+        <StripeContainer />
+      ) : (
+        <>
+          <h3>$140.00</h3> <img src={imageURL}></img>
+          <button onClick={() => setShowItem(true)}>Buy</button>
+        </>
+      )}
     </div>
   );
 }
