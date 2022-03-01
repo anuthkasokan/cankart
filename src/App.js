@@ -75,30 +75,29 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <AmplifySignOut></AmplifySignOut>
-        <h2>CanKart</h2>
-        <button onClick={getList} className="btn book-link">
-          Get /getList
-        </button>
-        <button onClick={addList} className="btn book-link">
-          Add /getList
-        </button>
-        <button onClick={putList} className="btn book-link">
-          Put /getList
-        </button>
-        <button onClick={deleteList} className="btn book-link">
-          Delete /getList
-        </button>
-      </header>
-
-      <h1>callofduty7</h1>
       {showItem ? (
         <StripeContainer />
       ) : (
         <>
-          <h3>$140.00</h3> <img src={imageURL}></img>
-          <button onClick={() => setShowItem(true)}>Buy</button>
+          <header className="App-header">
+            <AmplifySignOut></AmplifySignOut>
+            <h2>CanKart</h2>
+            <button onClick={getList} className="btn book-link">
+              Get /getList
+            </button>
+            <button onClick={addList} className="btn book-link">
+              Add /getList
+            </button>
+            <button onClick={putList} className="btn book-link">
+              Put /getList
+            </button>
+            <button onClick={deleteList} className="btn book-link">
+              Delete /getList
+            </button>
+            <h1>callofduty7</h1>
+            <h3>$140.00</h3> <img src={imageURL} alt="Sample"></img>
+            <button onClick={() => setShowItem(true)}>Buy</button>
+          </header>
         </>
       )}
     </div>
