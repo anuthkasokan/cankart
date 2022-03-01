@@ -1,0 +1,14 @@
+{
+  "resourceName": "videogamedb",
+  "tableName": "videogametable",
+  "partitionKey": {
+    "fieldName": "videogameId",
+    "fieldType": "number"
+  },
+  "sortKey": {
+    "fieldName": "version",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
