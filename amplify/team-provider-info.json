@@ -20,7 +20,7 @@
       "function": {
         "videogameapifunc": {
           "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
-          "s3Key": "amplify-builds/videogameapifunc-3169675643584d414344-build.zip"
+          "s3Key": "amplify-builds/videogameapifunc-6e4e2f4c594a3033626d-build.zip"
         },
         "videogamefunc": {
           "deploymentBucketName": "amplify-cankart-dev-233731-deployment",

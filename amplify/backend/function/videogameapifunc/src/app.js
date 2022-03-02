@@ -36,6 +36,12 @@ app.post("/payment", cors(), async (req, res) => {
     });
   }
 });
+
+app.get("/videogames", function (req, res) {
+  res.statusCode = 200;
+  res.json({ success: "call succeeded" });
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("server is listening on port 3000");
 });

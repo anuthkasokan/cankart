@@ -1,8 +1,8 @@
 {
   "version": 1,
   "paths": {
-    "/videogames/{videogameId}": {
-      "name": "/videogames/{videogameId}",
+    "/videogames": {
+      "name": "/videogames",
       "lambdaFunction": "videogameapifunc",
       "permissions": {
         "setting": "open"
@@ -13,15 +13,8 @@
       "lambdaFunction": "videogamefunc",
       "permissions": {
         "setting": "protected",
-        "auth": [
-          "create",
-          "read",
-          "update",
-          "delete"
-        ],
-        "guest": [
-          "read"
-        ]
+        "auth": ["create", "read", "update", "delete"],
+        "guest": ["read"]
       }
     },
     "/payment": {
@@ -29,16 +22,8 @@
       "lambdaFunction": "videogameapifunc",
       "permissions": {
         "setting": "protected",
-        "auth": [
-          "create",
-          "read",
-          "update",
-          "delete"
-        ],
-        "guest": [
-          "create",
-          "read"
-        ]
+        "auth": ["create", "read", "update", "delete"],
+        "guest": ["create", "read"]
       }
     }
   }
