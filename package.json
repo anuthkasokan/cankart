@@ -10,6 +10,8 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "aws-amplify": "^3.0.18",
+    "aws-sdk": "^2.1084.0",
+    "aws-serverless-express": "^3.4.0",
     "axios": "^0.26.0",
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
