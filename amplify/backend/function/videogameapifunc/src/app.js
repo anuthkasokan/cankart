@@ -8,7 +8,12 @@ const awsServerlessExpressMiddleware = require("aws-serverless-express/middlewar
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+// Enable CORS for all methods
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+});
 app.use(awsServerlessExpressMiddleware.eventContext());
 
 app.post("/payment", cors(), async (req, res) => {
@@ -37,7 +42,7 @@ app.post("/payment", cors(), async (req, res) => {
   }
 });
 
-app.get("/videogames/{videogameId}", function (req, res) {
+app.get("/videogames/:videogameId", function (req, res) {
   res.statusCode = 200;
   res.json({ success: "call succeeded" });
 });
