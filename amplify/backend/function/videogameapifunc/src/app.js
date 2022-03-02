@@ -16,7 +16,7 @@ app.use(function (req, res, next) {
 });
 app.use(awsServerlessExpressMiddleware.eventContext());
 
-app.post("/payment", cors(), async (req, res) => {
+app.post("/payment", async (req, res) => {
   console.log("entered payment!");
   console.log(req.body);
   let { amount, id } = req.body;
