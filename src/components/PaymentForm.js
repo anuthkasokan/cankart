@@ -60,7 +60,7 @@ export default function PaymentForm() {
         console.log("Error", error);
       }
     } else {
-      console.log(error.message);
+      console.log(error);
     }
   };
 
