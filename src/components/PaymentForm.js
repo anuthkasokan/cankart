@@ -42,6 +42,13 @@ export default function PaymentForm() {
           {
             amount: 1,
             id,
+          },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Headers": "*",
+            },
           }
         );
 

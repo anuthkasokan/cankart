@@ -42,7 +42,7 @@ app.post("/payment", async (req, res) => {
   }
 });
 
-app.get("/videogames/:videogameId", function (req, res) {
+app.get("/videogames/{videogameId}", function (req, res) {
   res.statusCode = 200;
   res.json({ success: "call succeeded" });
 });
