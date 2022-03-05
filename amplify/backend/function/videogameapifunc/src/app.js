@@ -18,28 +18,32 @@ app.use(awsServerlessExpressMiddleware.eventContext());
 
 app.post("/payment", async (req, res) => {
   console.log("entered payment!");
-  console.log(req.body);
-  let { amount, id } = req.body;
-  try {
-    const payment = await stripe.paymentIntents.create({
-      amount,
-      currency: "USD",
-      description: "Call of Duty 7",
-      payment_method: id,
-      confirm: true,
-    });
-    console.log("payment", payment);
-    res.json({
-      message: "Payment successful",
-      success: true,
-    });
-  } catch (error) {
-    console.log("error", error);
-    res.json({
-      message: "Payment failed",
-      success: false,
-    });
-  }
+  // console.log(req.body);
+  // let { amount, id } = req.body;
+  // try {
+  //   const payment = await stripe.paymentIntents.create({
+  //     amount,
+  //     currency: "USD",
+  //     description: "Call of Duty 7",
+  //     payment_method: id,
+  //     confirm: true,
+  //   });
+  //   console.log("payment", payment);
+  //   res.json({
+  //     message: "Payment successful",
+  //     success: true,
+  //   });
+  // } catch (error) {
+  //   console.log("error", error);
+  //   res.json({
+  //     message: "Payment failed",
+  //     success: false,
+  //   });
+  // }
+  res.json({
+    message: "Payment successful",
+    success: true,
+  });
 });
 
 app.get("/videogames/{videogameId}", function (req, res) {

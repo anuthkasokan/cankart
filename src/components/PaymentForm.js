@@ -37,6 +37,7 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
+        console.log(id);
         const response = await axios.post(
           "https://xqwhodfpf7.execute-api.ca-central-1.amazonaws.com/develop/payment",
           {
@@ -46,8 +47,12 @@ export default function PaymentForm() {
           {
             headers: {
               "Content-Type": "application/json",
+              //"x-api-key": "DXqrlENUCa2mnRrilXOYs8N4S0wXcFc09zjZBIei",
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers": "*",
+              "Access-Control-Allow-Credentials": true,
+              //"x-api-id": "t9ln42u4sg",
+              testsource: "testtoken",
             },
           }
         );
@@ -57,7 +62,8 @@ export default function PaymentForm() {
           setSuccess(true);
         }
       } catch (error) {
-        console.log("Error", error);
+        console.log("Error: ", error);
+        console.log("message: ", error.message);
       }
     } else {
       console.log(error.message);
