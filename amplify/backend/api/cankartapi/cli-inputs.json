@@ -1,29 +1,18 @@
 {
   "version": 1,
   "paths": {
-    "/videogames": {
-      "name": "/videogames",
-      "lambdaFunction": "videogameapifunc",
+    "/getList": {
+      "name": "/getList",
+      "lambdaFunction": "gameapifunc",
       "permissions": {
         "setting": "open"
       }
     },
-    "/getList": {
-      "name": "/getList",
-      "lambdaFunction": "videogamefunc",
-      "permissions": {
-        "setting": "protected",
-        "auth": ["create", "read", "update", "delete"],
-        "guest": ["read"]
-      }
-    },
     "/payment": {
       "name": "/payment",
-      "lambdaFunction": "videogameapifunc",
+      "lambdaFunction": "paymentfunc",
       "permissions": {
-        "setting": "protected",
-        "auth": ["create", "read", "update", "delete"],
-        "guest": ["create", "read"]
+        "setting": "open"
       }
     }
   }

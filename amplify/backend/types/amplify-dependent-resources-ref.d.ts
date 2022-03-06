@@ -1,6 +1,6 @@
 export type AmplifyDependentResourcesAttributes = {
     "auth": {
-        "cankartdac7425b": {
+        "cankarta681c857": {
             "IdentityPoolId": "string",
             "IdentityPoolName": "string",
             "UserPoolId": "string",
@@ -10,14 +10,28 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
+    "storage": {
+        "cankartdynamodb": {
+            "Name": "string",
+            "Arn": "string",
+            "StreamArn": "string",
+            "PartitionKeyName": "string",
+            "PartitionKeyType": "string",
+            "Region": "string"
+        },
+        "cankartS3": {
+            "BucketName": "string",
+            "Region": "string"
+        }
+    },
     "function": {
-        "videogameapifunc": {
+        "gameapifunc": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
             "LambdaExecutionRole": "string"
         },
-        "videogamefunc": {
+        "paymentfunc": {
             "Name": "string",
             "Arn": "string",
             "Region": "string",
@@ -29,22 +43,6 @@ export type AmplifyDependentResourcesAttributes = {
             "RootUrl": "string",
             "ApiName": "string",
             "ApiId": "string"
-        }
-    },
-    "storage": {
-        "videogamedb": {
-            "Name": "string",
-            "Arn": "string",
-            "StreamArn": "string",
-            "PartitionKeyName": "string",
-            "PartitionKeyType": "string",
-            "SortKeyName": "string",
-            "SortKeyType": "string",
-            "Region": "string"
-        },
-        "gameImages": {
-            "BucketName": "string",
-            "Region": "string"
         }
     }
 }

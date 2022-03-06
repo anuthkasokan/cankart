@@ -1,14 +1,15 @@
 {
-  "resourceName": "gameImages",
-  "policyUUID": "bef69764",
-  "bucketName": "image-storage",
+  "resourceName": "cankartS3",
+  "policyUUID": "44062940",
+  "bucketName": "videogames",
   "storageAccess": "authAndGuest",
   "guestAccess": [
     "READ"
   ],
   "authAccess": [
     "CREATE_AND_UPDATE",
-    "READ"
+    "READ",
+    "DELETE"
   ],
   "triggerFunction": "NONE",
   "groupAccess": {}

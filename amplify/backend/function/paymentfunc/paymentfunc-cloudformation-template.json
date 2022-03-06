@@ -15,14 +15,6 @@
     },
     "s3Key": {
       "Type": "String"
-    },
-    "storagevideogamedbName": {
-      "Type": "String",
-      "Default": "storagevideogamedbName"
-    },
-    "storagevideogamedbArn": {
-      "Type": "String",
-      "Default": "storagevideogamedbArn"
     }
   },
   "Conditions": {
@@ -55,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "videogamefunc",
+            "paymentfunc",
             {
               "Fn::Join": [
                 "",
                 [
-                  "videogamefunc",
+                  "paymentfunc",
                   "-",
                   {
                     "Ref": "env"
@@ -97,12 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "cankartLambdaRole9deaf4b4",
+            "cankartLambdaRole04a58caa",
             {
               "Fn::Join": [
                 "",
                 [
-                  "cankartLambdaRole9deaf4b4",
+                  "cankartLambdaRole04a58caa",
                   "-",
                   {
                     "Ref": "env"
@@ -168,34 +160,6 @@
                   }
                 ]
               }
-            },
-            {
-              "Effect": "Allow",
-              "Action": [
-                "dynamodb:DescribeTable",
-                "dynamodb:GetItem",
-                "dynamodb:Query",
-                "dynamodb:Scan",
-                "dynamodb:PutItem",
-                "dynamodb:UpdateItem",
-                "dynamodb:DeleteItem"
-              ],
-              "Resource": [
-                {
-                  "Ref": "storagevideogamedbArn"
-                },
-                {
-                  "Fn::Join": [
-                    "/",
-                    [
-                      {
-                        "Ref": "storagevideogamedbArn"
-                      },
-                      "index/*"
-                    ]
-                  ]
-                }
-              ]
             }
           ]
         }
