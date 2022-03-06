@@ -39,7 +39,7 @@ export default function PaymentForm() {
         const { id } = paymentMethod;
         console.log(id);
         const response = await axios.post(
-          "https://xqwhodfpf7.execute-api.ca-central-1.amazonaws.com/develop/payment",
+          "https://dhfk7faw67.execute-api.ca-central-1.amazonaws.com/dev/payment",
           {
             amount: 1,
             id: id,
@@ -53,7 +53,7 @@ export default function PaymentForm() {
               "Access-Control-Allow-Headers": "*",
               "Access-Control-Allow-Credentials": true,
               //"x-api-id": "t9ln42u4sg",
-              testsource: "testtoken",
+              // testsource: "testtoken",
             },
           }
         );
