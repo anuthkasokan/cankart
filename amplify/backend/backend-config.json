@@ -51,6 +51,11 @@
           }
         }
       ]
+    },
+    "gameapifunc": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "api": {
@@ -69,6 +74,20 @@
         {
           "category": "function",
           "resourceName": "videogamefunc",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ]
+    },
+    "gameapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "gameapifunc",
           "attributes": [
             "Name",
             "Arn"

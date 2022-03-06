@@ -20,11 +20,15 @@
       "function": {
         "videogameapifunc": {
           "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
-          "s3Key": "amplify-builds/videogameapifunc-6e4e2f4c594a3033626d-build.zip"
+          "s3Key": "amplify-builds/videogameapifunc-6666356146787748412f-build.zip"
         },
         "videogamefunc": {
           "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
           "s3Key": "amplify-builds/videogamefunc-67437033314d5167524d-build.zip"
+        },
+        "gameapifunc": {
+          "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
+          "s3Key": "amplify-builds/gameapifunc-4d792b2f5a417445484f-build.zip"
         }
       }
     }

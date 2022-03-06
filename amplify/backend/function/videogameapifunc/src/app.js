@@ -51,6 +51,11 @@ app.get("/videogames/{videogameId}", function (req, res) {
   res.json({ success: "call succeeded" });
 });
 
+app.get("/test", function (req, res) {
+  res.statusCode = 200;
+  res.json({ message: "call succeeded", success: true });
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log("server is listening on port 3000");
 });

@@ -39,10 +39,10 @@ export default function PaymentForm() {
         const { id } = paymentMethod;
         console.log(id);
         const response = await axios.post(
-          "https://xqwhodfpf7.execute-api.ca-central-1.amazonaws.com/develop/payment",
+          "https://g0csdj5ul6.execute-api.ca-central-1.amazonaws.com/dev/payment",
           {
             amount: 1,
-            id,
+            id: id,
           },
           {
             headers: {
@@ -56,7 +56,7 @@ export default function PaymentForm() {
             },
           }
         );
-
+        console.log(response);
         if (response.data.success) {
           console.log("Successful payment");
           setSuccess(true);
