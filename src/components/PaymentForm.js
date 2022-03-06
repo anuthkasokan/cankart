@@ -39,7 +39,7 @@ export default function PaymentForm() {
         const { id } = paymentMethod;
         console.log(id);
         const response = await axios.post(
-          "https://g0csdj5ul6.execute-api.ca-central-1.amazonaws.com/dev/payment",
+          "https://xqwhodfpf7.execute-api.ca-central-1.amazonaws.com/develop/payment",
           {
             amount: 1,
             id: id,
@@ -48,6 +48,7 @@ export default function PaymentForm() {
             headers: {
               "Content-Type": "application/json",
               //"x-api-key": "DXqrlENUCa2mnRrilXOYs8N4S0wXcFc09zjZBIei",
+              "Access-Control-Allow-Methods": "*",
               "Access-Control-Allow-Origin": "*",
               "Access-Control-Allow-Headers": "*",
               "Access-Control-Allow-Credentials": true,
