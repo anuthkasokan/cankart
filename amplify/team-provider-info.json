@@ -23,7 +23,7 @@
         },
         "paymentfunc": {
           "deploymentBucketName": "amplify-cankart-dev-13454-deployment",
-          "s3Key": "amplify-builds/paymentfunc-2b414d4b77632b714c4a-build.zip"
+          "s3Key": "amplify-builds/paymentfunc-4a583841506f67702f2f-build.zip"
         }
       }
     }
