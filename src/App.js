@@ -44,6 +44,7 @@ function App() {
         company: "Activision",
         rating: "8.5",
         version: "7",
+        availableQuantity: 20,
         creationDate: "02/21/2022",
       },
     })

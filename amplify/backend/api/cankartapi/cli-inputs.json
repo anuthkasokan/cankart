@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "paths": {
+    "/getList": {
+      "name": "/getList",
+      "lambdaFunction": "gameapifunc",
+      "permissions": {
+        "setting": "open"
+      }
+    },
+    "/payment": {
+      "name": "/payment",
+      "lambdaFunction": "paymentfunc",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

@@ -1,26 +1,29 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-cankart-dev-233731-authRole",
-      "UnauthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-233731-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-233731-authRole",
+      "AuthRoleName": "amplify-cankart-dev-13454-authRole",
+      "UnauthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-13454-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-dev-13454-authRole",
       "Region": "ca-central-1",
-      "DeploymentBucketName": "amplify-cankart-dev-233731-deployment",
-      "UnauthRoleName": "amplify-cankart-dev-233731-unauthRole",
-      "StackName": "amplify-cankart-dev-233731",
-      "StackId": "arn:aws:cloudformation:ca-central-1:589181210185:stack/amplify-cankart-dev-233731/d506fae0-8d4f-11ec-95b6-0a53b41213e0",
-      "AmplifyAppId": "dcc6o0mgkuw6r",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-cankart-dev-233731-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+      "DeploymentBucketName": "amplify-cankart-dev-13454-deployment",
+      "UnauthRoleName": "amplify-cankart-dev-13454-unauthRole",
+      "StackName": "amplify-cankart-dev-13454",
+      "StackId": "arn:aws:cloudformation:ca-central-1:589181210185:stack/amplify-cankart-dev-13454/8b0ee2e0-9d17-11ec-94ef-028863492800",
+      "AmplifyAppId": "d1nwec2g9yiggz"
     },
     "categories": {
       "auth": {
-        "cankartdac7425b": {},
+        "cankarta681c857": {},
         "true": {}
       },
       "function": {
-        "videogamefunc": {
-          "deploymentBucketName": "amplify-cankart-dev-233731-deployment",
-          "s3Key": "amplify-builds/videogamefunc-67437033314d5167524d-build.zip"
+        "gameapifunc": {
+          "deploymentBucketName": "amplify-cankart-dev-13454-deployment",
+          "s3Key": "amplify-builds/gameapifunc-38616d6f75445262755a-build.zip"
+        },
+        "paymentfunc": {
+          "deploymentBucketName": "amplify-cankart-dev-13454-deployment",
+          "s3Key": "amplify-builds/paymentfunc-2b414d4b77632b714c4a-build.zip"
         }
       }
     }

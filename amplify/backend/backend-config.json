@@ -1,6 +1,6 @@
 {
   "auth": {
-    "cankartdac7425b": {
+    "cankarta681c857": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -27,20 +27,26 @@
       }
     }
   },
-  "function": {
-    "videogameapifunc": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+  "storage": {
+    "cankartdynamodb": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     },
-    "videogamefunc": {
+    "cankartS3": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
+  },
+  "function": {
+    "gameapifunc": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda",
       "dependsOn": [
         {
           "category": "storage",
-          "resourceName": "videogamedb",
+          "resourceName": "cankartdynamodb",
           "attributes": [
             "Name",
             "Arn"
@@ -52,7 +58,7 @@
         }
       ]
     },
-    "gameapifunc": {
+    "paymentfunc": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -65,7 +71,7 @@
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "videogameapifunc",
+          "resourceName": "gameapifunc",
           "attributes": [
             "Name",
             "Arn"
@@ -73,38 +79,13 @@
         },
         {
           "category": "function",
-          "resourceName": "videogamefunc",
+          "resourceName": "paymentfunc",
           "attributes": [
             "Name",
             "Arn"
           ]
         }
       ]
-    },
-    "gameapi": {
-      "service": "API Gateway",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "gameapifunc",
-          "attributes": [
-            "Name",
-            "Arn"
-          ]
-        }
-      ]
-    }
-  },
-  "storage": {
-    "videogamedb": {
-      "service": "DynamoDB",
-      "providerPlugin": "awscloudformation"
-    },
-    "gameImages": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
     }
   }
 }
