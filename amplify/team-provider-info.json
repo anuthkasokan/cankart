@@ -1,4 +1,17 @@
 {
+  "main": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-cankart-main-231549-authRole",
+      "UnauthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-main-231549-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::589181210185:role/amplify-cankart-main-231549-authRole",
+      "Region": "ca-central-1",
+      "DeploymentBucketName": "amplify-cankart-main-231549-deployment",
+      "UnauthRoleName": "amplify-cankart-main-231549-unauthRole",
+      "StackName": "amplify-cankart-main-231549",
+      "StackId": "arn:aws:cloudformation:ca-central-1:589181210185:stack/amplify-cankart-main-231549/5cd3b090-9da3-11ec-8c82-0e315e1b69ca",
+      "AmplifyAppId": "d2hi3mft2z37q9"
+    }
+  },
   "dev": {
     "awscloudformation": {
       "AuthRoleName": "amplify-cankart-dev-13454-authRole",
