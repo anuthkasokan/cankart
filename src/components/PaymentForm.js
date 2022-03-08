@@ -39,7 +39,7 @@ export default function PaymentForm() {
         const { id } = paymentMethod;
         console.log(id);
         const response = await axios.post(
-          "https://007cv2kf3a.execute-api.ca-central-1.amazonaws.com/main/payment",
+          "https://mtxxo28ccg.execute-api.ca-central-1.amazonaws.com/develop",
           {
             amount: 1,
             id: id,
