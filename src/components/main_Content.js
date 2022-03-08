@@ -9,7 +9,7 @@ import { API, Storage } from "aws-amplify";
 const MainContext = () => {
   useEffect(() => {
     const getGameList = () => {
-      return API.get("cankartapi", "/getList/1", {})
+      return API.get("cankartapi", "/getList", {})
         .then((result) => {
           console.log(result);
         })

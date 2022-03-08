@@ -65,11 +65,10 @@ app.get(path, function (req, res) {
       res.statusCode = 500;
       res.json({ error: "Could not load items: " + err });
     } else {
-      scanResults.push(data.Items);
+      res.statusCode = 200;
+      res.json(data.Items);
     }
   });
-
-  return res.json(scanResults);
 });
 
 /********************************
