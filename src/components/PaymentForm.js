@@ -47,13 +47,6 @@ export default function PaymentForm() {
           {
             headers: {
               "Content-Type": "application/json",
-              //"x-api-key": "DXqrlENUCa2mnRrilXOYs8N4S0wXcFc09zjZBIei",
-              // "Access-Control-Allow-Methods": "*",
-              // "Access-Control-Allow-Origin": "*",
-              // "Access-Control-Allow-Headers": "*",
-              // "Access-Control-Allow-Credentials": true,
-              //"x-api-id": "t9ln42u4sg",
-              // testsource: "testtoken",
             },
           }
         );
