@@ -60,13 +60,15 @@ app.get(path, function (req, res) {
 
   const scanResults = [];
   let items;
-  do {
-    items = await dynamodb.scan(params).promise();
-    items.Items.forEach((item) => scanResults.push(item));
-    params.ExclusiveStartKey = items.LastEvaluatedKey;
-  } while (typeof items.LastEvaluatedKey !== "undefined");
-
-  return res.json(scanResults);
+  dynamodb.scan(params, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({ error: "Could not load items: " + err });
+    } else {
+      res.statusCode = 200;
+      res.json(data.Items);
+    }
+  });
 });
 
 /********************************
