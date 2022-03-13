@@ -7,10 +7,12 @@ import '../MainApp.scss';
 export default function header() {
     return (
         <nav>
-            <div className="logo">CanKart</div>
+            <img src="logo4.png" alt="cankart logo" width="350" height="60"></img>
+            <div className="logo"></div>
+                 
             <ul>
                 <li>Home</li>
-                <li>Our products</li>
+                <li>Our Products</li>
                 <li>About </li>
                 <li>Contact</li>
                 <li> <AmplifySignOut></AmplifySignOut></li>
