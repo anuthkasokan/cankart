@@ -1,20 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Storage } from "aws-amplify";
 
 const CardComponent = (props) => {
-  console.log(props);
+  const [imageURL, setImageURL] = useState("");
+  const [showItem, setShowItem] = useState(false);
+
+  useEffect(() => {
+    Storage.get(props.item.imageUrl).then((data) => {
+      setImageURL(data);
+    });
+  });
+
   return (
     <div className="card" key={props.item.videogameId}>
       <div className="card_img">
-        <img src={props.item.imageUrl} />
+        <img src={imageURL} />
       </div>
-      <div clasName="card_header">
+      <div className="card_header">
         <h2 className="prod-name">{props.item.name}</h2>
         <p className="prod-desc">{props.item.company}</p>
         <p className="price">
           {props.item.price}
           <span>$</span>
         </p>
-        <div className="add-btn">Buy</div>
+        <div className="add-btn" onClick={() => props.showItem(true)}>
+          Buy
+        </div>
       </div>
     </div>
   );

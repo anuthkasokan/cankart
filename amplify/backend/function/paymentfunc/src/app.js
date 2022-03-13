@@ -11,30 +11,33 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
 const express = require("express");
 const bodyParser = require("body-parser");
 const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
+const cors = require("cors");
 
 // declare a new express app
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(awsServerlessExpressMiddleware.eventContext());
 
 // Enable CORS for all methods
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
+app.use(cors());
+// app.use(function (req, res, next) {
+//   res.header("Access-Control-Allow-Methods", "*");
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "*");
+//   next();
+// });
 
 /**********************
  * Example get method *
  **********************/
 
-app.get("/payment", function (req, res) {
+app.get("/payment", cors(), function (req, res) {
   // Add your code here
   res.json({ success: "get call succeed!", url: req.url });
 });
 
-app.get("/payment/*", function (req, res) {
+app.get("/payment/*", cors(), function (req, res) {
   // Add your code here
   res.json({ success: "get call succeed!", url: req.url });
 });
@@ -43,7 +46,7 @@ app.get("/payment/*", function (req, res) {
  * Example post method *
  ****************************/
 
-app.post("/payment", async function (req, res) {
+app.post("/payment", cors(), async function (req, res) {
   // Add your code here
   let { amount, id } = req.body;
   try {
@@ -69,7 +72,7 @@ app.post("/payment", async function (req, res) {
   //res.json({ success: "post call succeed!", url: req.url, body: req.body });
 });
 
-app.post("/payment/*", function (req, res) {
+app.post("/payment/*", cors(), function (req, res) {
   // Add your code here
   res.json({ success: "post call succeed!", url: req.url, body: req.body });
 });
@@ -78,12 +81,12 @@ app.post("/payment/*", function (req, res) {
  * Example put method *
  ****************************/
 
-app.put("/payment", function (req, res) {
+app.put("/payment", cors(), function (req, res) {
   // Add your code here
   res.json({ success: "put call succeed!", url: req.url, body: req.body });
 });
 
-app.put("/payment/*", function (req, res) {
+app.put("/payment/*", cors(), function (req, res) {
   // Add your code here
   res.json({ success: "put call succeed!", url: req.url, body: req.body });
 });
@@ -92,12 +95,12 @@ app.put("/payment/*", function (req, res) {
  * Example delete method *
  ****************************/
 
-app.delete("/payment", function (req, res) {
+app.delete("/payment", cors(), function (req, res) {
   // Add your code here
   res.json({ success: "delete call succeed!", url: req.url });
 });
 
-app.delete("/payment/*", function (req, res) {
+app.delete("/payment/*", cors(), function (req, res) {
   // Add your code here
   res.json({ success: "delete call succeed!", url: req.url });
 });

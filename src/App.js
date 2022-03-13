@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
-import { Amplify, API, Storage } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import awsconfig from "./aws-exports";
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import StripeContainer from "./components/StripeContainer";
 import "./MainApp.scss";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import MainContext from "./components/main_Content";
+import StripeContainer from "./components/StripeContainer";
 
 Amplify.configure(awsconfig);
 
 function App() {
+  const [showItem, setShowItem] = useState(false);
+
+  const showStripe = (item) => {
+    setShowItem(item);
+  };
   // const [showItem, setShowItem] = useState(false);
   // const [imageURL, setImageURL] = useState("");
 
@@ -82,7 +87,11 @@ function App() {
     <div className="container">
       <>
         <Header />
-        <MainContext />
+        {showItem ? (
+          <StripeContainer />
+        ) : (
+          <MainContext showStripe={showStripe} />
+        )}
         <Footer />
       </>
     </div>
