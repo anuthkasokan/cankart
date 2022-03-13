@@ -52,11 +52,12 @@ app.post("/payment", cors(), async function (req, res) {
   // Add your code here
   let { amount, id } = req.body;
   try {
-    const payment = await stripe.customers
+    const payment = await stripe.paymentIntents
       .create({
-        amount,
-        currency: "USD",
-        description: "Call of Duty 7",
+        amount: amount,
+        currency: "cad",
+        payment_method_types: ["card"],
+        description: "test payment from cankart",
         payment_method: id,
         confirm: true,
       })
