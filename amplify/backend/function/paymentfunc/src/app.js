@@ -52,22 +52,88 @@ app.post("/payment", cors(), async function (req, res) {
   // Add your code here
   let { amount, id } = req.body;
   try {
-    const payment = await stripe.paymentIntents.create({
-      amount,
-      currency: "USD",
-      description: "Call of Duty 7",
-      payment_method: id,
-      confirm: true,
-    });
-    console.log("payment", payment);
-    res.json({
-      message: "Payment successful",
-      success: true,
-    });
+    const payment = await stripe.customers
+      .create({
+        amount,
+        currency: "USD",
+        description: "Call of Duty 7",
+        payment_method: id,
+        confirm: true,
+      })
+      .then(
+        function (result) {
+          console.log("payment:", result);
+          res.json({
+            message: "Payment successful",
+            success: true,
+          });
+        },
+        function (err) {
+          switch (err.type) {
+            case "StripeCardError":
+              // A declined card error
+              console.log("error", err.message);
+              res.json({
+                message: err.message,
+                success: false,
+              });
+              // => e.g. "Your card's expiration year is invalid."
+              break;
+            case "StripeRateLimitError":
+              // Too many requests made to the API too quickly
+              console.log("error", err.message);
+              res.json({
+                message: err.message,
+                success: false,
+              });
+              break;
+            case "StripeInvalidRequestError":
+              // Invalid parameters were supplied to Stripe's API
+              console.log("error", err.message);
+              res.json({
+                message: err.message,
+                success: false,
+              });
+              break;
+            case "StripeAPIError":
+              // An error occurred internally with Stripe's API
+              console.log("error", err.message);
+              res.json({
+                message: err.message,
+                success: false,
+              });
+              break;
+            case "StripeConnectionError":
+              // Some kind of error occurred during the HTTPS communication
+              console.log("error", err.message);
+              res.json({
+                message: err.message,
+                success: false,
+              });
+              break;
+            case "StripeAuthenticationError":
+              // You probably used an incorrect API key
+              console.log("error", err.message);
+              res.json({
+                message: err.message,
+                success: false,
+              });
+              break;
+            default:
+              // Handle any other types of unexpected errors
+              console.log("error", err.message);
+              res.json({
+                message: err.message,
+                success: false,
+              });
+              break;
+          }
+        }
+      );
   } catch (error) {
     console.log("error", error);
     res.json({
-      message: "Payment failed",
+      message: error.message,
       success: false,
     });
   }
