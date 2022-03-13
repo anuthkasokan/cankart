@@ -7,7 +7,9 @@ See the License for the specific language governing permissions and limitations 
 */
 
 require("dotenv").config();
-const stripe = require("stripe")(process.env.STRIPE_SECRET_TEST);
+const stripe = require("stripe")(
+  "sk_test_51KYPrEE5iK0SDtJgLUzXCziS0LE0dJF3vCoPXmVZGiu6VKU79NijcH4Twf9M7GatyjsnD03V91VOt7Fv0pbTEhTT00FfU4Brjt"
+);
 const express = require("express");
 const bodyParser = require("body-parser");
 const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
