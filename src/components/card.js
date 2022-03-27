@@ -12,7 +12,7 @@ const CardComponent = (props) => {
   });
 
   return (
-    <div className="card" key={props.item.videogameId}>
+    <div className="card">
       <div className="card_img">
         <img src={imageURL} />
       </div>

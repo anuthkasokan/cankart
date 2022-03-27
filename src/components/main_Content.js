@@ -26,11 +26,7 @@ const MainContext = (props) => {
   return (
     <div className="main_content">
       {gameList.map((item) => (
-        <CardComponent
-          key="{item.videogameId}"
-          showItem={showItem}
-          item={item}
-        />
+        <CardComponent key={item.videogameId} showItem={showItem} item={item} />
       ))}
     </div>
   );

@@ -30,6 +30,11 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make  sure to disable form submission until Stripe.js has loaded.
+      return;
+    }
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -38,27 +43,20 @@ export default function PaymentForm() {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        console.log(id);
         const response = await axios.post(
-          "https://mtxxo28ccg.execute-api.ca-central-1.amazonaws.com/develop",
+          "https://mtxxo28ccg.execute-api.ca-central-1.amazonaws.com/develop/payment",
           {
-            amount: 1,
-            id: id,
-          },
-          {
-            headers: {
-              "Content-Type": "application/json",
-            },
+            amount: 1000,
+            id,
           }
         );
-        console.log(response);
+
         if (response.data.success) {
           console.log("Successful payment");
           setSuccess(true);
         }
       } catch (error) {
-        console.log("Error: ", error);
-        console.log("message: ", error.message);
+        console.log("Error", error);
       }
     } else {
       console.log(error.message);

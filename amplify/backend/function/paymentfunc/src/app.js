@@ -24,7 +24,7 @@ app.use(awsServerlessExpressMiddleware.eventContext());
 // Enable CORS for all methods
 //app.use(cors());
 app.use(function (req, res, next) {
-  //res.header("Access-Control-Allow-Methods", "*");
+  res.header("Access-Control-Allow-Methods", "*");
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
   next();
@@ -131,6 +131,7 @@ app.post("/payment", async function (req, res) {
           }
         }
       );
+    console.log(payment, payment);
   } catch (error) {
     console.log("error", error);
     res.json({
@@ -138,6 +139,7 @@ app.post("/payment", async function (req, res) {
       success: false,
     });
   }
+
   //res.json({ success: "post call succeed!", url: req.url, body: req.body });
 });
 
