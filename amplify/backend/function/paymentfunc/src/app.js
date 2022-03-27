@@ -6,28 +6,44 @@ or in the "license" file accompanying this file. This file is distributed on an 
 See the License for the specific language governing permissions and limitations under the License.
 */
 
+const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
+const express = require("express");
+const app = express();
 require("dotenv").config();
 const stripe = require("stripe")(
   "sk_test_51KYPrEE5iK0SDtJgLUzXCziS0LE0dJF3vCoPXmVZGiu6VKU79NijcH4Twf9M7GatyjsnD03V91VOt7Fv0pbTEhTT00FfU4Brjt"
 );
-const express = require("express");
 const bodyParser = require("body-parser");
-const awsServerlessExpressMiddleware = require("aws-serverless-express/middleware");
-//const cors = require("cors");
+const cors = require("cors");
 
-// declare a new express app
-const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(awsServerlessExpressMiddleware.eventContext());
+app.use(cors());
 
-// Enable CORS for all methods
-//app.use(cors());
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Methods", "*");
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
+app.post("/payment", cors(), async (req, res) => {
+  let { amount, id } = req.body;
+
+  try {
+    const payment = await stripe.paymentIntents.create({
+      amount,
+      currency: "cad",
+      description: "New game",
+      payment_method: id,
+      confirm: true,
+    });
+    console.log("payment", payment);
+    res.json({
+      message: "Payment successful",
+      success: true,
+    });
+  } catch (error) {
+    console.log("error", error);
+    res.json({
+      message: "Payment failed",
+      success: false,
+    });
+  }
 });
 
 /**********************
@@ -39,144 +55,7 @@ app.get("/payment", function (req, res) {
   res.json({ success: "get call succeed!", url: req.url });
 });
 
-app.get("/payment/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "get call succeed!", url: req.url });
-});
-
-/****************************
- * Example post method *
- ****************************/
-
-app.post("/payment", async function (req, res) {
-  // Add your code here
-  let { amount, id } = req.body;
-  try {
-    const payment = await stripe.paymentIntents
-      .create({
-        amount: amount,
-        currency: "cad",
-        payment_method_types: ["card"],
-        description: "test payment from cankart",
-        payment_method: id,
-        confirm: true,
-      })
-      .then(
-        function (result) {
-          console.log("payment:", result);
-          res.json({
-            message: "Payment successful",
-            success: true,
-          });
-        },
-        function (err) {
-          switch (err.type) {
-            case "StripeCardError":
-              // A declined card error
-              console.log("error", err.message);
-              res.json({
-                message: err.message,
-                success: false,
-              });
-              // => e.g. "Your card's expiration year is invalid."
-              break;
-            case "StripeRateLimitError":
-              // Too many requests made to the API too quickly
-              console.log("error", err.message);
-              res.json({
-                message: err.message,
-                success: false,
-              });
-              break;
-            case "StripeInvalidRequestError":
-              // Invalid parameters were supplied to Stripe's API
-              console.log("error", err.message);
-              res.json({
-                message: err.message,
-                success: false,
-              });
-              break;
-            case "StripeAPIError":
-              // An error occurred internally with Stripe's API
-              console.log("error", err.message);
-              res.json({
-                message: err.message,
-                success: false,
-              });
-              break;
-            case "StripeConnectionError":
-              // Some kind of error occurred during the HTTPS communication
-              console.log("error", err.message);
-              res.json({
-                message: err.message,
-                success: false,
-              });
-              break;
-            case "StripeAuthenticationError":
-              // You probably used an incorrect API key
-              console.log("error", err.message);
-              res.json({
-                message: err.message,
-                success: false,
-              });
-              break;
-            default:
-              // Handle any other types of unexpected errors
-              console.log("error", err.message);
-              res.json({
-                message: err.message,
-                success: false,
-              });
-              break;
-          }
-        }
-      );
-    console.log(payment, payment);
-  } catch (error) {
-    console.log("error", error);
-    res.json({
-      message: error.message,
-      success: false,
-    });
-  }
-
-  //res.json({ success: "post call succeed!", url: req.url, body: req.body });
-});
-
-app.post("/payment/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "post call succeed!", url: req.url, body: req.body });
-});
-
-/****************************
- * Example put method *
- ****************************/
-
-app.put("/payment", function (req, res) {
-  // Add your code here
-  res.json({ success: "put call succeed!", url: req.url, body: req.body });
-});
-
-app.put("/payment/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "put call succeed!", url: req.url, body: req.body });
-});
-
-/****************************
- * Example delete method *
- ****************************/
-
-app.delete("/payment", function (req, res) {
-  // Add your code here
-  res.json({ success: "delete call succeed!", url: req.url });
-});
-
-app.delete("/payment/*", function (req, res) {
-  // Add your code here
-  res.json({ success: "delete call succeed!", url: req.url });
-});
-
-app.listen(3000, function () {
+app.listen(4000, function () {
   console.log("App started");
 });
 
