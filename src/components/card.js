@@ -3,9 +3,10 @@ import { Storage } from "aws-amplify";
 
 const CardComponent = (props) => {
   const [imageURL, setImageURL] = useState("");
+  const { item, onAdd } = props;
 
   useEffect(() => {
-    Storage.get(props.item.imageUrl).then((data) => {
+    Storage.get(item.imageUrl).then((data) => {
       setImageURL(data);
     });
   });
@@ -16,14 +17,17 @@ const CardComponent = (props) => {
         <img src={imageURL} />
       </div>
       <div className="card_header">
-        <h2 className="prod-name">{props.item.name}</h2>
-        <p className="prod-desc">{props.item.company}</p>
+        <h2 className="prod-name">{item.name}</h2>
+        <p className="prod-desc">{item.company}</p>
         <p className="price">
-          {props.item.price}
+          {item.price}
           <span>$</span>
         </p>
-        <div className="add-btn" onClick={() => props.showItem(true)}>
+        {/* <div className="add-btn" onClick={() => props.showItem(true)}>
           Buy
+        </div> */}
+        <div className="add-btn" onClick={() => onAdd(item)}>
+          Add To Cart
         </div>
       </div>
     </div>

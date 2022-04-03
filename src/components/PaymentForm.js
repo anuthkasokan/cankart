@@ -35,6 +35,7 @@ export default function PaymentForm() {
       // Make  sure to disable form submission until Stripe.js has loaded.
       return;
     }
+
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card: elements.getElement(CardElement),
@@ -46,7 +47,7 @@ export default function PaymentForm() {
         const response = await axios.post(
           "https://mtxxo28ccg.execute-api.ca-central-1.amazonaws.com/develop/payment",
           {
-            amount: 1000,
+            amount: 98.66 * 100,
             id,
           }
         );
