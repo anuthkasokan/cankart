@@ -3,7 +3,6 @@ import { Storage } from "aws-amplify";
 
 const CardComponent = (props) => {
   const [imageURL, setImageURL] = useState("");
-  const [showItem, setShowItem] = useState(false);
 
   useEffect(() => {
     Storage.get(props.item.imageUrl).then((data) => {

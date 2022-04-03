@@ -76,7 +76,10 @@ export default function PaymentForm() {
         </form>
       ) : (
         <div>
-          <h2>Congratulations! Happy gaming!!</h2>
+          <h2 style={{ color: "white" }}>Congratulations! Happy gaming!!</h2>
+          <button onClick={() => window.location.reload(false)}>
+            Continue shopping
+          </button>
         </div>
       )}
     </>
