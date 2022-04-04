@@ -1,6 +1,8 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { AmplifySignOut } from "@aws-amplify/ui-react";
 import "../MainApp.scss";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 export default function header(props) {
   const { countCartItems } = props;
@@ -11,7 +13,7 @@ export default function header(props) {
       <div className="logo"></div>
 
       <ul>
-        <li>Home</li>
+        <li onClick={() => window.location.reload(false)}>Home</li>
         <li>Our Products</li>
         <li>About </li>
         <li>Contact</li>
@@ -20,9 +22,9 @@ export default function header(props) {
           <AmplifySignOut></AmplifySignOut>
         </li>
         <li onClick={() => props.showCart(true)}>
-          Cart{" "}
+          <FontAwesomeIcon height={1.5} icon={faCartShopping} />{" "}
           {countCartItems ? (
-            <button className="badge">{countCartItems}</button>
+            <span className="badge">{countCartItems}</span>
           ) : (
             ""
           )}
