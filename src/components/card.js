@@ -14,7 +14,7 @@ const CardComponent = (props) => {
   return (
     <div className="card">
       <div className="card_img">
-        <img src={imageURL} />
+        <img src={imageURL} alt="sampleImage" />
       </div>
       <div className="card_header">
         <h2 className="prod-name">{item.name}</h2>

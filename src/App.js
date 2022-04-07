@@ -78,7 +78,6 @@ function App() {
         } else setSignedIn(false);
       })
       .catch((err) => {
-        console.log(err);
         setSignedIn(false);
       });
   }, []);
@@ -87,7 +86,6 @@ function App() {
     Hub.listen("auth", (data) => {
       switch (data.payload.event) {
         case "signIn":
-          console.log("signedIn");
           setSignedIn(true);
           break;
         case "signOut":

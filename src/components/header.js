@@ -16,7 +16,6 @@ export default function Header(props) {
         } else setIsLoggedIn(false);
       })
       .catch((err) => {
-        console.log(err);
         setIsLoggedIn(false);
       });
   }, [signedIn]);
