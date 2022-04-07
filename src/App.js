@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import { Amplify } from "aws-amplify";
+import { Amplify, Auth, Hub } from "aws-amplify";
 import awsconfig from "./aws-exports";
-import { withAuthenticator } from "@aws-amplify/ui-react";
 import "./MainApp.scss";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Cart from "./components/cart";
 import MainContext from "./components/main_Content";
 import StripeContainer from "./components/StripeContainer";
+import { AmplifyAuthenticator } from "@aws-amplify/ui-react";
 
 Amplify.configure(awsconfig);
 
@@ -17,6 +17,7 @@ function App() {
   const [checkout, setCheckout] = useState(0);
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([]);
+  const [signedIn, setSignedIn] = useState(false);
 
   const onAdd = (product) => {
     const exist = cartItems.find((x) => x.videogameId === product.videogameId);
@@ -68,27 +69,63 @@ function App() {
     setShowCart(item);
   };
 
+  useEffect(() => {
+    setAuthListener();
+    Auth.currentAuthenticatedUser()
+      .then((user) => {
+        if (user) {
+          setSignedIn(true);
+        } else setSignedIn(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSignedIn(false);
+      });
+  }, []);
+
+  async function setAuthListener() {
+    Hub.listen("auth", (data) => {
+      switch (data.payload.event) {
+        case "signIn":
+          console.log("signedIn");
+          setSignedIn(true);
+          break;
+        case "signOut":
+          setSignedIn(false);
+          break;
+        default:
+          setSignedIn(false);
+      }
+    });
+  }
+
   return (
     <div className="container">
       <>
-        <Header showCart={goToCart} countCartItems={cartItems.length} />
-        {showCart ? (
-          <Cart
-            onAdd={onAdd}
-            onRemove={onRemove}
-            cartItems={cartItems}
-            showStripe={showStripe}
-            totalPrice={totalPrice}
-          ></Cart>
-        ) : showItem ? (
-          <StripeContainer checkout={checkout} />
-        ) : (
-          <MainContext onAdd={onAdd} />
-        )}
+        <Header
+          showCart={goToCart}
+          signedIn={signedIn}
+          countCartItems={cartItems.length}
+        />
+        <AmplifyAuthenticator>
+          {showCart ? (
+            <Cart
+              onAdd={onAdd}
+              onRemove={onRemove}
+              cartItems={cartItems}
+              showStripe={showStripe}
+              totalPrice={totalPrice}
+            ></Cart>
+          ) : showItem ? (
+            <StripeContainer checkout={checkout} />
+          ) : (
+            <MainContext onAdd={onAdd} />
+          )}
+        </AmplifyAuthenticator>
         <Footer />
       </>
     </div>
   );
 }
 
-export default withAuthenticator(App);
+export default App;
